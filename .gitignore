@@ -1,0 +1,14 @@
+Include
+Lib
+Scripts
+storage
+file_watcher.log
+pyvenv.cfg
+test.csv
+dist
+build
+city.py
+example.xlsx
+main.py
+main.spec
+test.xlsx

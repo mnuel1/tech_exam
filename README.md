@@ -1,5 +1,12 @@
 ## Instructions for Running the Project
 
+
+Clone the repository, you can use this command in your terminal: 
+```bash
+git clone https://github.com/mnuel1/tech_exam.git
+```
+
+
 ### 1. Running `background.py`
 To run `background.py`, use the following command in your terminal:
 ```bash

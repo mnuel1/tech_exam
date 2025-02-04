@@ -11,12 +11,20 @@ from pymongo.server_api import ServerApi
 
 from config.db import uri, DB_NAME, COLLECTION_NAME
 
-# Configure logging
-logging.basicConfig(filename="file_watcher.log", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Directory Paths
-WATCH_DIR = "storage/app/medalists/"
-ARCHIVE_DIR = "storage/app/medalists/archive/"
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+log_file_path = os.path.join(root_dir, "file_watcher.log")
+
+# Configure logging
+logging.basicConfig(filename=log_file_path, level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+
+# Define the watch directory path
+WATCH_DIR = os.path.join(root_dir, "storage", "app", "medalists")
+ARCHIVE_DIR = os.path.join(root_dir, "storage", "app", "medalists", "archive")
+os.makedirs(WATCH_DIR, exist_ok=True) # make sure folder exist
 os.makedirs(ARCHIVE_DIR, exist_ok=True) # make sure folder exist
 
 class CSVHandler(FileSystemEventHandler):

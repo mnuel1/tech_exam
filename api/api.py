@@ -7,6 +7,8 @@ from pymongo.server_api import ServerApi
 
 from config.db import uri, DB_NAME, COLLECTION_NAME
 
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
 app = FastAPI()
 
 """ initiate database """
@@ -32,7 +34,7 @@ async def upload_csv(file: UploadFile = File(...)):
     if len(contents) > max_file_size:
         raise HTTPException(status_code=400, detail="File is too large. Maximum size is 5MB.")
 
-    upload_dir = "storage/app/medalists/"
+    upload_dir = os.path.join(root_dir, "storage", "app", "medalists")
     os.makedirs(upload_dir, exist_ok=True)
 
     file_path = os.path.join(upload_dir, file.filename)
